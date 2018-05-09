@@ -14,10 +14,15 @@ public class UserServiceApplication {
 	@Autowired
 	private UserRepo userRepository;
 
+	@Autowired
+	private RoleRepo roleRepository;
+
 	@PostConstruct
 	public void generateTestData() {
 		userRepository.save(new User(1000L,"Alice", "password"));
 		userRepository.save(new User(1001L,"Bob", "password"));
+		roleRepository.save(new Role(1000L,"Admin", 1L));
+		roleRepository.save(new Role(1001L,"User", 2L));
 	}
 
 	public static void main(String[] args) {
