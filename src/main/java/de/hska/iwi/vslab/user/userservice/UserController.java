@@ -43,6 +43,17 @@ public class UserController {
 	 return new ResponseEntity<>(user, HttpStatus.OK);
  }
 
+ @RequestMapping(value = "/users/{userId}", method = RequestMethod.PUT)
+	public ResponseEntity<?> updateUser(@RequestBody User user) {
+		user = repo.save(user);
+		// Set the location header for the newly created resource
+		HttpHeaders responseHeaders = new HttpHeaders();
+		URI newProductUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId())
+				.toUri();
+		responseHeaders.setLocation(newProductUri);
+		return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+	}
+
  @RequestMapping(value = "/users/{userId}", method = RequestMethod.DELETE)
  public ResponseEntity<User> deleteUser(@PathVariable Long userId) {
 	 repo.deleteById(userId);

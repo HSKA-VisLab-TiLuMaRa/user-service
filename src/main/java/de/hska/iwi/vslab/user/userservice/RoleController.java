@@ -43,6 +43,17 @@ public class RoleController {
 	 return new ResponseEntity<>(role, HttpStatus.OK);
  }
 
+ @RequestMapping(value = "/roles/{roleId}", method = RequestMethod.PUT)
+ public ResponseEntity<?> updateRole(@RequestBody Role role) {
+	 role = repo.save(role);
+	 // Set the location header for the newly created resource
+	 HttpHeaders responseHeaders = new HttpHeaders();
+	 URI newRoleUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(role.getId())
+			 .toUri();
+	 responseHeaders.setLocation(newRoleUri);
+	 return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+ }
+
  @RequestMapping(value = "/roles/{roleId}", method = RequestMethod.DELETE)
  public ResponseEntity<Role> deleteRole(@PathVariable Long roleId) {
 	 repo.deleteById(roleId);

@@ -19,8 +19,9 @@ public class UserServiceApplication {
 
 	@PostConstruct
 	public void generateTestData() {
-		userRepository.save(new User(1000L,"Alice", "password"));
-		userRepository.save(new User(1001L,"Bob", "password"));
+		userRepository.save(new User(1000L,"ahunter", "password", "Alexandra", "Hunter", 0));
+		userRepository.save(new User(1001L,"bbuilder", "password", "Bob", "Builder", 0));
+		userRepository.save(new User(1002L,"admin", "admin", "Lord Commander", "Warchief of Microservices", 1));
 		roleRepository.save(new Role(1000L,"Admin", 1L));
 		roleRepository.save(new Role(1001L,"User", 2L));
 	}
