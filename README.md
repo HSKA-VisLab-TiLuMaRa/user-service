@@ -4,6 +4,11 @@
 
 This project is part of the microservice architecture which can be found [here](https://github.com/HSKA-VisLab-TiLuMaRa).
 
+## Maven commands
+- `mvn install`
+- `mvn spring-boot:run`
+- `mvn clean`
+
 ## user-service (Core-Service)
 
 - offer a REST interface
