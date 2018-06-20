@@ -2,6 +2,7 @@
 package de.hska.iwi.vslab.user.userservice;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -41,6 +42,16 @@ public class UserController {
  public ResponseEntity<User> getUser(@PathVariable Long userId) {
 	 User user = repo.findById(userId).orElse(null);
 	 return new ResponseEntity<>(user, HttpStatus.OK);
+ }
+
+ @RequestMapping(value = "/usersByUsername/{username}", method = RequestMethod.GET)
+ public ResponseEntity<User> getUserByUserName(@PathVariable String username) {
+	 User result = null;
+	 Iterable<User> users = repo.findUserByUsername(username);
+	for (User user: users) {
+		result = user;
+	}
+	return new ResponseEntity<>(result, HttpStatus.OK); 
  }
 
  @RequestMapping(value = "/users/{userId}", method = RequestMethod.PUT)
