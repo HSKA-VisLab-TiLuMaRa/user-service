@@ -29,6 +29,7 @@ public class UserController {
 
  @RequestMapping(value = "/users", method = RequestMethod.POST)
  public ResponseEntity<?> addUser(@RequestBody User user) {
+	 System.out.println(user.toString());
 	 user = repo.save(user);
 	 // Set the location header for the newly created resource
 	 HttpHeaders responseHeaders = new HttpHeaders();
