@@ -32,6 +32,7 @@ public class UserController {
 	 user = repo.save(user);
 	 // Set the location header for the newly created resource
 	 HttpHeaders responseHeaders = new HttpHeaders();
+   responseHeaders.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, null);
 	 URI newUserUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId())
 			 .toUri();
 	 responseHeaders.setLocation(newUserUri);
@@ -51,7 +52,7 @@ public class UserController {
 	for (User user: users) {
 		result = user;
 	}
-	return new ResponseEntity<>(result, HttpStatus.OK); 
+	return new ResponseEntity<>(result, HttpStatus.OK);
  }
 
  @RequestMapping(value = "/users/{userId}", method = RequestMethod.PUT)
