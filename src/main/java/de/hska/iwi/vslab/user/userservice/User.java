@@ -17,7 +17,7 @@ public class User {
 	private String username;
 
 	@Column(name = "USER_PWD")
-	private String password;
+	private String peter;
 
 	@Column(name = "USER_FIRSTNAME")
 	private String firstname;
@@ -30,10 +30,10 @@ public class User {
 
 	public User(){}
 
-	public User(Long id, String username, String password, String firstname, String lastname, Integer roleId) {
+	public User(Long id, String username, String peter, String firstname, String lastname, Integer roleId) {
 		this.id = id;
 		this.username = username;
-		this.password = password;
+		this.peter = peter;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.roleId = roleId;
@@ -55,12 +55,12 @@ public class User {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPeter() {
+		return peter;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPeter(String peter) {
+		this.peter = peter;
 	}
 
 	public String getFirstname() {
@@ -87,7 +87,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", username=" + username + ", peter=" + peter + "]";
 	}
 
 }
